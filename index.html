@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="مستشفى البشري - تقديم أفضل الخدمات الطبية والرعاية الصحية"
+    />
+    <title>مستشفى البشري | الرعاية الصحية المتكاملة</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* أنماط CSS الأساسية */
+      :root {
+        --primary-color: #1a76d2;
+        --secondary-color: #34a853;
+        --accent-color: #ea4335;
+        --light-color: #f8f9fa;
+        --dark-color: #202124;
+        --text-color: #333;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Tajawal", sans-serif;
+      }
+
+      body {
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+        background-color: #fff;
+      }
+
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--light-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+
+      .loader {
+        width: 60px;
+        height: 60px;
+        border: 5px solid rgba(26, 118, 210, 0.2);
+        border-radius: 50%;
+        border-top: 5px solid var(--primary-color);
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(300deg);
+        }
+      }
+
+      /* أنماط الشريط العلوي */
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 15px 0;
+        transition: var(--transition);
+      }
+
+      .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-item {
+        margin: 0 15px;
+      }
+
+      .nav-link {
+        color: var(--dark-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .nav-link:hover {
+        color: var(--primary-color);
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        min-width: 200px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .dropdown-item {
+        display: block;
+        padding: 12px 20px;
+        color: var(--text-color);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .dropdown-item:hover {
+        background: #f5f5f5;
+        color: var(--primary-color);
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+      }
+
+      .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: var(--dark-color);
+        transition: var(--transition);
+      }
+
+      /* أنماط قسم البطل */
+      .hero {
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        width: 80%;
+        max-width: 800px;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .btn {
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #1557b0;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        color: var(--primary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* أنماط الأقسام */
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: var(--primary-color);
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--primary-color);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .departments-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .department-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .department-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .department-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .department-content {
+        padding: 20px;
+      }
+
+      .department-name {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+      }
+
+      .department-desc {
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .read-more {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .read-more i {
+        margin-right: 5px;
+        transition: var(--transition);
+      }
+
+      .read-more:hover i {
+        transform: translateX(5px);
+      }
+
+      /* أنماط الأطباء */
+      .doctors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .doctor-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .doctor-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .doctor-img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .doctor-content {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .doctor-name {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+        color: var(--primary-color);
+      }
+
+      .doctor-specialty {
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .doctor-desc {
+        color: #444;
+        margin-bottom: 20px;
+      }
+
+      /* أنماط الأزرار الثابتة */
+      .fixed-buttons {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 99;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .fixed-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: var(--transition);
+        text-decoration: none;
+      }
+
+      .whatsapp-btn {
+        background: #25d366;
+      }
+
+      .phone-btn {
+        background: var(--primary-color);
+      }
+
+      .scroll-top-btn {
+        background: var(--secondary-color);
+      }
+
+      .fixed-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* أنماط التذييل */
+      footer {
+        background: var(--dark-color);
+        color: white;
+        padding: 60px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-column h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: var(--primary-color);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: white;
+        padding-right: 5px;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+      }
+
+      /* أنماط الاستجابة */
+      @media (max-width: 992px) {
+        .hero-title {
+          font-size: 2.8rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .nav-menu {
+          position: fixed;
+          right: -100%;
+          top: 70px;
+          flex-direction: column;
+          background: white;
+          width: 80%;
+          height: 100vh;
+          padding: 40px 20px;
+          transition: 0.5s;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-menu.active {
+          right: 0;
+        }
+
+        .nav-item {
+          margin: 15px 0;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .dropdown-content {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          box-shadow: none;
+          margin-top: 10px;
+          margin-right: 15px;
+          display: none;
+        }
+
+        .dropdown.active .dropdown-content {
+          display: block;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.2rem;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-title {
+          font-size: 1.8rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+
+        .btn {
+          padding: 10px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- شاشة التحميل -->
+    <div class="loading-screen">
+      <div class="loader"></div>
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="index.html" class="logo">مستشفى البشري</a>
+
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">الصفحة الرئيسية</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link">أقسام المستشفى</a>
+            <div class="dropdown-content">
+              <a href="cardiology.html" class="dropdown-item">قسم القلب</a>
+              <a href="emergency.html" class="dropdown-item">قسم الطوارئ</a>
+              <a href="surgery.html" class="dropdown-item">قسم الجراحة</a>
+              <a href="orthopedics.html" class="dropdown-item">قسم العظام</a>
+              <a href="pediatrics.html" class="dropdown-item">قسم الأطفال</a>
+              <a href="radiology.html" class="dropdown-item">قسم الأشعة</a>
+              <a href="laboratory.html" class="dropdown-item"
+                >المختبر والتحاليل</a
+              >
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a href="about.html" class="nav-link">من نحن</a>
+          </li>
+          <li class="nav-item">
+            <a href="doctors.html" class="nav-link">الأطباء</a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link">تواصل معنا</a>
+          </li>
+        </ul>
+
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section class="hero">
+      <div class="hero-slider">
+        <div
+          class="slide active"
+          style="background-image: url('حدائق.jpg')"
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url('https://source.unsplash.com/random/1600x900/?clinic,health');
+          "
+        ></div>
+        <div
+          class="slide"
+          style="
+            background-image: url('https://source.unsplash.com/random/1600x900/?doctor,medicine');
+          "
+        ></div>
+      </div>
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-title" data-aos="fade-down">مستشفى البشري</h1>
+        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+          نقدم لكم أفضل الخدمات الطبية والرعاية الصحية بأعلى المعايير العالمية
+        </p>
+        <div class="hero-buttons">
+          <a
+            href="#appointment"
+            class="btn btn-primary"
+            data-aos="fade-right"
+            data-aos-delay="400"
+            >طلب الخدمة</a
+          >
+          <a
+            href="tel:+1234567890"
+            class="btn btn-secondary"
+            data-aos="fade-left"
+            data-aos-delay="400"
+            >اتصل بنا</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم الأقسام الطبية -->
+    <section class="section" id="departments">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">أقسام المستشفى</h2>
+
+        <div class="departments-grid">
+          <div class="department-card" data-aos="fade-up" data-aos-delay="100">
+            <img
+              src="https://source.unsplash.com/random/600x400/?cardiology"
+              alt="قسم القلب"
+              class="department-img"
+            />
+            <div class="department-content">
+              <h3 class="department-name">قسم القلب</h3>
+              <p class="department-desc">
+                يوفر قسم القلبية لدينا أحدث التقنيات لتشخيص وعلاج أمراض القلب
+                والأوعية الدموية.
+              </p>
+              <a href="cardiology.html" class="read-more"
+                >قراءة المزيد <i class="fas fa-arrow-left"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="department-card" data-aos="fade-up" data-aos-delay="200">
+            <img
+              src="https://source.unsplash.com/random/600x400/?emergency"
+              alt="قسم الطوارئ"
+              class="department-img"
+            />
+            <div class="department-content">
+              <h3 class="department-name">قسم الطوارئ</h3>
+              <p class="department-desc">
+                خدمة طوارئ على مدار الساعة طوال أيام الأسبوع لتقديم الرعاية
+                العاجلة في الحالات الحرجة.
+              </p>
+              <a href="emergency.html" class="read-more"
+                >قراءة المزيد <i class="fas fa-arrow-left"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="department-card" data-aos="fade-up" data-aos-delay="300">
+            <img
+              src="https://source.unsplash.com/random/600x400/?surgery"
+              alt="قسم الجراحة"
+              class="department-img"
+            />
+            <div class="department-content">
+              <h3 class="department-name">قسم الجراحة</h3>
+              <p class="department-desc">
+                أحدث غرف العمليات مجهزة بأفضل التقنيات العالمية وطاقم جراحي
+                متميز.
+              </p>
+              <a href="surgery.html" class="read-more"
+                >قراءة المزيد <i class="fas fa-arrow-left"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم من نحن -->
+    <section class="section" id="about" style="background-color: #f8f9fa">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">من نحن</h2>
+
+        <div class="about-content" data-aos="fade-up" data-aos-delay="200">
+          <p>
+            مستشفى البشري هي مؤسسة صحية رائدة تقدم خدمات طبية متكاملة وفقاً
+            لأعلى المعايير العالمية. تأسست المستشفى عام 1995 بهدف تقديم رعاية
+            صحية شاملة ومتميزة للمرضى.
+          </p>
+
+          <p>
+            نحن نضم نخبة من الأطباء والاستشاريين المتميزين في مختلف التخصصات
+            الطبية، بالإضافة إلى كادر تمريضي مؤهل ومدرب على أعلى مستوى.
+          </p>
+
+          <p>
+            تتميز مستشفى البشري بتجهيزاتها الطبية المتطورة التي تضمن تقديم أفضل
+            الخدمات التشخيصية والعلاجية، مع الالتزام بمعايير الجودة والسلامة.
+          </p>
+
+          <a href="about.html" class="btn btn-primary">المزيد عنا</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم الأطباء -->
+    <section class="section" id="doctors">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">أطباؤنا</h2>
+
+        <div class="doctors-grid">
+          <div class="doctor-card" data-aos="fade-up" data-aos-delay="100">
+            <img
+              src="https://source.unsplash.com/random/600x800/?doctor,male"
+              alt="د. أحمد محمد"
+              class="doctor-img"
+            />
+            <div class="doctor-content">
+              <h3 class="doctor-name">د. أحمد محمد</h3>
+              <p class="doctor-specialty">استشاري أمراض القلب</p>
+              <p class="doctor-desc">
+                حاصل على البورد الأمريكي في أمراض القلب، خبرة أكثر من 15 عاماً
+                في تشخيص وعلاج أمراض القلب.
+              </p>
+              <a href="#appointment" class="btn btn-primary">حجز موعد</a>
+            </div>
+          </div>
+
+          <div class="doctor-card" data-aos="fade-up" data-aos-delay="200">
+            <img
+              src="https://source.unsplash.com/random/600x800/?doctor,female"
+              alt="د. سارة عبد الله"
+              class="doctor-img"
+            />
+            <div class="doctor-content">
+              <h3 class="doctor-name">د. سارة عبد الله</h3>
+              <p class="doctor-specialty">استشارية جراحة العظام</p>
+              <p class="doctor-desc">
+                خريجة جامعة هارفارد، متخصصة في جراحات العمود الفقري والمفاصل،
+                خبرة 12 عاماً.
+              </p>
+              <a href="#appointment" class="btn btn-primary">حجز موعد</a>
+            </div>
+          </div>
+
+          <div class="doctor-card" data-aos="fade-up" data-aos-delay="300">
+            <img
+              src="https://source.unsplash.com/random/600x800/?doctor"
+              alt="د. خالد حسن"
+              class="doctor-img"
+            />
+            <div class="doctor-content">
+              <h3 class="doctor-name">د. خالد حسن</h3>
+              <p class="doctor-specialty">استشاري الجراحة العامة</p>
+              <p class="doctor-desc">
+                أجرى أكثر من 5000 عملية جراحية ناجحة، متخصص في جراحات المناظير
+                المتطورة.
+              </p>
+              <a href="#appointment" class="btn btn-primary">حجز موعد</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px">
+          <a href="doctors.html" class="btn btn-primary">عرض جميع الأطباء</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم الاتجاهات -->
+    <section class="section" id="directions" style="background-color: #f8f9fa">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">كيفية الوصول إلينا</h2>
+
+        <div class="map-container" data-aos="fade-up" data-aos-delay="200">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.231861518367!2d46.67238231500026!3d24.81758498407156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2ee3e9c2df873f%3A0x79b0d2c1bffe32b2!2sRiyadh%2C%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1623576543210!5m2!1sen!2s"
+            width="100%"
+            height="400"
+            style="border: 0; border-radius: 10px"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+          <a
+            href="https://goo.gl/maps/example"
+            target="_blank"
+            class="btn btn-primary"
+            >الحصول على الاتجاهات</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>مستشفى البشري</h3>
+            <p>
+              نقدم لكم أفضل الخدمات الطبية والرعاية الصحية بأعلى المعايير
+              العالمية، مع فريق طبي متكامل ومرافق حديثة.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h3>روابط سريعة</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">الصفحة الرئيسية</a></li>
+              <li><a href="about.html">من نحن</a></li>
+              <li><a href="doctors.html">الأطباء</a></li>
+              <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>الأقسام</h3>
+            <ul class="footer-links">
+              <li><a href="cardiology.html">قسم القلب</a></li>
+              <li><a href="emergency.html">قسم الطوارئ</a></li>
+              <li><a href="surgery.html">قسم الجراحة</a></li>
+              <li><a href="radiology.html">قسم الأشعة</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>معلومات الاتصال</h3>
+            <ul class="footer-links">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية
+                السعودية
+              </li>
+              <li><i class="fas fa-phone"></i> +966 11 123 4567</li>
+              <li><i class="fas fa-envelope"></i> info@albashrihospital.com</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2023 مستشفى البشري. جميع الحقوق محفوظة.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- الأزرار الثابتة -->
+    <div class="fixed-buttons">
+      <a
+        href="https://wa.me/966551234567"
+        class="fixed-btn whatsapp-btn"
+        target="_blank"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="tel:+966551234567" class="fixed-btn phone-btn">
+        <i class="fas fa-phone"></i>
+      </a>
+      <a href="#" class="fixed-btn scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+      </a>
+    </div>
+
+    <!-- نموذج الحجز (سيظهر في弹出 نافذة) -->
+    <div id="appointment-modal" class="modal" style="display: none">
+      <!-- سيتم إضافة نموذج الحجز هنا -->
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // تهيئة AOS
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init({
+          duration: 1000,
+          once: true,
+          offset: 100,
+        });
+
+        // إخفاء شاشة التحميل بعد تحميل الصفحة
+        setTimeout(function () {
+          document.querySelector(".loading-screen").style.opacity = "0";
+          setTimeout(function () {
+            document.querySelector(".loading-screen").style.display = "none";
+          }, 500);
+        }, 2000);
+
+        // شريط التنقل للجوال
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        hamburger.addEventListener("click", function () {
+          hamburger.classList.toggle("active");
+          navMenu.classList.toggle("active");
+        });
+
+        // إغلاق القائمة عند النقر على رابط
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+          });
+        });
+
+        // منزلق الصور في قسم البطل
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(n) {
+          slides.forEach((slide) => slide.classList.remove("active"));
+          currentSlide = (n + slides.length) % slides.length;
+          slides[currentSlide].classList.add("active");
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        // تغيير الصورة كل 5 ثوان
+        setInterval(nextSlide, 5000);
+
+        // زر العودة للأعلى
+        const scrollTopBtn = document.querySelector(".scroll-top-btn");
+
+        scrollTopBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // إظهار/إخفاء زر العودة للأعلى
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            scrollTopBtn.style.display = "flex";
+          } else {
+            scrollTopBtn.style.display = "none";
+          }
+        });
+
+        // القوائم المنسدلة للجوال
+        const dropdowns = document.querySelectorAll(".dropdown > .nav-link");
+
+        dropdowns.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            if (window.innerWidth < 992) {
+              e.preventDefault();
+              const dropdown = this.parentElement;
+              dropdown.classList.toggle("active");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
