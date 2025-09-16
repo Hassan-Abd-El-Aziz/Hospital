@@ -83,7 +83,7 @@
         background: rgba(255, 255, 255, 0.95);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         z-index: 1000;
-        padding: 15px 0;
+        padding: 5px 0;
         transition: var(--transition);
       }
 
@@ -93,7 +93,7 @@
         align-items: center;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 10px 20px;
       }
 
       .logo {
@@ -110,6 +110,7 @@
 
       .nav-item {
         margin: 0 15px;
+        font-size: 18px;
       }
 
       .nav-link {
@@ -122,6 +123,7 @@
 
       .nav-link:hover {
         color: var(--primary-color);
+        padding: 10px 0;
       }
 
       .nav-link::after {
@@ -155,6 +157,7 @@
         visibility: hidden;
         transition: var(--transition);
         z-index: 1;
+        margin-top: 30px;
       }
 
       .dropdown:hover .dropdown-content {
@@ -226,7 +229,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.6);
       }
 
       .hero-content {
@@ -256,7 +259,9 @@
         justify-content: center;
         gap: 15px;
       }
-
+      .about-content p:nth-last-child(2) {
+        margin-bottom: 15px;
+      }
       .btn {
         padding: 12px 30px;
         border-radius: 50px;
@@ -459,6 +464,7 @@
 
       .scroll-top-btn {
         background: var(--secondary-color);
+        display: none;
       }
 
       .fixed-btn:hover {
@@ -491,7 +497,7 @@
         content: "";
         position: absolute;
         bottom: 0;
-        left: 0;
+        right: 0;
         width: 50px;
         height: 2px;
         background: var(--primary-color);
@@ -669,19 +675,15 @@
       <div class="hero-slider">
         <div
           class="slide active"
-          style="background-image: url('حدائق.jpg')"
+          style="background-image: url('assets/img/Hero1.jpg')"
         ></div>
         <div
           class="slide"
-          style="
-            background-image: url('https://source.unsplash.com/random/1600x900/?clinic,health');
-          "
+          style="background-image: url('assets/img/Hero2.jpg')"
         ></div>
         <div
           class="slide"
-          style="
-            background-image: url('https://source.unsplash.com/random/1600x900/?doctor,medicine');
-          "
+          style="background-image: url('assets/img/Hero\ 3.jpg')"
         ></div>
       </div>
       <div class="overlay"></div>
@@ -693,14 +695,14 @@
         </p>
         <div class="hero-buttons">
           <a
-            href="#appointment"
+            href="contact.html"
             class="btn btn-primary"
             data-aos="fade-right"
             data-aos-delay="400"
             >طلب الخدمة</a
           >
           <a
-            href="tel:+1234567890"
+            href="tel:+201009039628"
             class="btn btn-secondary"
             data-aos="fade-left"
             data-aos-delay="400"
@@ -718,7 +720,7 @@
         <div class="departments-grid">
           <div class="department-card" data-aos="fade-up" data-aos-delay="100">
             <img
-              src="https://source.unsplash.com/random/600x400/?cardiology"
+              src="assets/img/Heart 1.jpg"
               alt="قسم القلب"
               class="department-img"
             />
@@ -736,7 +738,7 @@
 
           <div class="department-card" data-aos="fade-up" data-aos-delay="200">
             <img
-              src="https://source.unsplash.com/random/600x400/?emergency"
+              src="assets/img/Emmer.jpg"
               alt="قسم الطوارئ"
               class="department-img"
             />
@@ -752,19 +754,98 @@
             </div>
           </div>
 
-          <div class="department-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="department-card" data-aos="fade-up" data-aos-delay="200">
             <img
-              src="https://source.unsplash.com/random/600x400/?surgery"
+              src="assets/img/Surgery.jpg"
               alt="قسم الجراحة"
               class="department-img"
             />
             <div class="department-content">
               <h3 class="department-name">قسم الجراحة</h3>
               <p class="department-desc">
-                أحدث غرف العمليات مجهزة بأفضل التقنيات العالمية وطاقم جراحي
-                متميز.
+                قسم الجراحة هو أحد أهم الأقسام الطبية داخل المستشفى، ويهتم
+                بتشخيص وعلاج الحالات المرضية التي تحتاج إلى تدخل جراحي. يعمل فيه
+                فريق متكامل من الأطباء الجراحين، المساعدين، أطباء التخدير،
+                التمريض، وفنيي العمليات.
               </p>
               <a href="surgery.html" class="read-more"
+                >قراءة المزيد <i class="fas fa-arrow-left"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="department-card" data-aos="fade-up" data-aos-delay="200">
+            <img
+              src="assets/img/Orthopedic doctor.jpg"
+              alt="قسم العظام"
+              class="department-img"
+            />
+            <div class="department-content">
+              <h3 class="department-name">قسم العظام</h3>
+              <p class="department-desc">
+                قسم العظام هو القسم المتخصص في تشخيص وعلاج أمراض وإصابات الجهاز
+                الحركي، بما يشمل العظام، المفاصل، الأربطة، الأوتار، والعضلات.
+                يعمل فيه أطباء استشاريون وجراحون متخصصون، إضافة إلى فريق تمريض
+                وتأهيل طبي.
+              </p>
+              <a href="emergency.html" class="read-more"
+                >قراءة المزيد <i class="fas fa-arrow-left"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="department-card" data-aos="fade-up" data-aos-delay="200">
+            <img
+              src="assets/img/Pediatrician.jpg"
+              alt="قسم الاطفال"
+              class="department-img"
+            />
+            <div class="department-content">
+              <h3 class="department-name">قسم الاطفال</h3>
+              <p class="department-desc">
+                قسم الأطفال هو القسم المتخصص في رعاية وتشخيص وعلاج الأمراض
+                الخاصة بالأطفال منذ الولادة وحتى سن البلوغ. يضم فريقًا من أطباء
+                الأطفال، التمريض، وأخصائيي التغذية والعلاج الطبيعي.
+              </p>
+              <a href="pediatrics.html" class="read-more"
+                >قراءة المزيد <i class="fas fa-arrow-left"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="department-card" data-aos="fade-up" data-aos-delay="200">
+            <img
+              src="assets/img/x-ray.jpg"
+              alt="قسم الاشعة"
+              class="department-img"
+            />
+            <div class="department-content">
+              <h3 class="department-name">قسم الأشعة</h3>
+              <p class="department-desc">
+                قسم الأشعة هو القسم المسؤول عن تشخيص الأمراض والإصابات باستخدام
+                التقنيات الإشعاعية والتصوير الطبي، ويُعد من أهم الأقسام المساندة
+                في المستشفى.
+              </p>
+              <a href="radiology.html" class="read-more"
+                >قراءة المزيد <i class="fas fa-arrow-left"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="department-card" data-aos="fade-up" data-aos-delay="300">
+            <img
+              src="assets/img/lap 2.jpg"
+              alt="قسم المختبر والتحاليل"
+              class="department-img"
+            />
+            <div class="department-content">
+              <h3 class="department-name">قسم المختبر والتحاليل</h3>
+              <p class="department-desc">
+                قسم التحاليل الطبية هو القسم المختص بـ إجراء الفحوصات المخبرية
+                على عينات الدم، البول، وسوائل الجسم المختلفة بهدف تشخيص الأمراض
+                ومتابعة الحالة الصحية للمرضى.
+              </p>
+              <a href="laboratory.html" class="read-more"
                 >قراءة المزيد <i class="fas fa-arrow-left"></i
               ></a>
             </div>
@@ -808,7 +889,7 @@
         <div class="doctors-grid">
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="100">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor,male"
+              src="assets/img/doc 1.jpg"
               alt="د. أحمد محمد"
               class="doctor-img"
             />
@@ -819,13 +900,13 @@
                 حاصل على البورد الأمريكي في أمراض القلب، خبرة أكثر من 15 عاماً
                 في تشخيص وعلاج أمراض القلب.
               </p>
-              <a href="#appointment" class="btn btn-primary">حجز موعد</a>
+              <a href="contact.html" class="btn btn-primary">حجز موعد</a>
             </div>
           </div>
 
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="200">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor,female"
+              src="assets/img/doc 2.jpg"
               alt="د. سارة عبد الله"
               class="doctor-img"
             />
@@ -836,13 +917,13 @@
                 خريجة جامعة هارفارد، متخصصة في جراحات العمود الفقري والمفاصل،
                 خبرة 12 عاماً.
               </p>
-              <a href="#appointment" class="btn btn-primary">حجز موعد</a>
+              <a href="contact.html" class="btn btn-primary">حجز موعد</a>
             </div>
           </div>
 
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="300">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor"
+              src="assets/img/doc 3.jpg"
               alt="د. خالد حسن"
               class="doctor-img"
             />
@@ -853,13 +934,15 @@
                 أجرى أكثر من 5000 عملية جراحية ناجحة، متخصص في جراحات المناظير
                 المتطورة.
               </p>
-              <a href="#appointment" class="btn btn-primary">حجز موعد</a>
+              <a href="contact.html" class="btn btn-primary">حجز موعد</a>
             </div>
           </div>
         </div>
 
         <div style="text-align: center; margin-top: 40px">
-          <a href="doctors.html" class="btn btn-primary">عرض جميع الأطباء</a>
+          <a href="doctors.html" class="btn btn-primary" data-aos="fade-up"
+            >عرض جميع الأطباء</a
+          >
         </div>
       </div>
     </section>
@@ -871,7 +954,7 @@
 
         <div class="map-container" data-aos="fade-up" data-aos-delay="200">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.231861518367!2d46.67238231500026!3d24.81758498407156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2ee3e9c2df873f%3A0x79b0d2c1bffe32b2!2sRiyadh%2C%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1623576543210!5m2!1sen!2s"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d141777.87529942772!2d39.40782926730968!3d21.873814821106848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c17b47dbe06c2d%3A0x105089a56ae4d3fa!2z2YXYrNmF2Lkg2KfZhNio2LTYsdmKINin2YTYt9io2Yo!5e1!3m2!1sar!2seg!4v1758024327285!5m2!1sar!2seg"
             width="100%"
             height="400"
             style="border: 0; border-radius: 10px"
@@ -880,9 +963,9 @@
           ></iframe>
         </div>
 
-        <div style="text-align: center; margin-top: 30px">
+        <div style="text-align: center; margin-top: 30px" data-aos="fade-up">
           <a
-            href="https://goo.gl/maps/example"
+            href="https://maps.app.goo.gl/4LvWbR7xSKY9qp3j9"
             target="_blank"
             class="btn btn-primary"
             >الحصول على الاتجاهات</a
@@ -919,7 +1002,10 @@
               <li><a href="cardiology.html">قسم القلب</a></li>
               <li><a href="emergency.html">قسم الطوارئ</a></li>
               <li><a href="surgery.html">قسم الجراحة</a></li>
+              <li><a href="orthopedics.html">قسم العظام</a></li>
+              <li><a href="pediatrics.html">قسم الأطفال</a></li>
               <li><a href="radiology.html">قسم الأشعة</a></li>
+              <li><a href="laboratory.html">المختبر والتحاليل</a></li>
             </ul>
           </div>
 
@@ -930,7 +1016,7 @@
                 <i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية
                 السعودية
               </li>
-              <li><i class="fas fa-phone"></i> +966 11 123 4567</li>
+              <li><i class="fas fa-phone"></i> +2 0100 9039 628</li>
               <li><i class="fas fa-envelope"></i> info@albashrihospital.com</li>
             </ul>
           </div>
@@ -945,13 +1031,13 @@
     <!-- الأزرار الثابتة -->
     <div class="fixed-buttons">
       <a
-        href="https://wa.me/966551234567"
+        href="https://wa.me/+201009039628"
         class="fixed-btn whatsapp-btn"
         target="_blank"
       >
         <i class="fab fa-whatsapp"></i>
       </a>
-      <a href="tel:+966551234567" class="fixed-btn phone-btn">
+      <a href="tel:+201009039628" class="fixed-btn phone-btn">
         <i class="fas fa-phone"></i>
       </a>
       <a href="#" class="fixed-btn scroll-top-btn">
@@ -1014,7 +1100,7 @@
         }
 
         // تغيير الصورة كل 5 ثوان
-        setInterval(nextSlide, 5000);
+        setInterval(nextSlide, 10000);
 
         // زر العودة للأعلى
         const scrollTopBtn = document.querySelector(".scroll-top-btn");
