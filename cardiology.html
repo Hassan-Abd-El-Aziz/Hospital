@@ -156,8 +156,7 @@
       /* أنماط الصفحة الداخلية */
       .department-header {
         background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-          url("https://source.unsplash.com/random/1600x900/?cardiology")
-            no-repeat center center/cover;
+          url("assets/img/Cardiologist/hero.jpg") no-repeat center center/cover;
         height: 400px;
         display: flex;
         align-items: center;
@@ -187,6 +186,7 @@
       }
 
       .breadcrumb-item.active {
+        font-weight: bold;
         color: var(--primary-color);
       }
 
@@ -386,7 +386,7 @@
         content: "";
         position: absolute;
         bottom: 0;
-        left: 0;
+        right: 0;
         width: 50px;
         height: 2px;
         background: var(--primary-color);
@@ -633,10 +633,7 @@
           </div>
 
           <div class="department-image" data-aos="fade-left">
-            <img
-              src="https://source.unsplash.com/random/600x400/?cardiology,medical"
-              alt="قسم القلب"
-            />
+            <img src="assets/img/Cardiologist/h3.jpg" alt="قسم القلب" />
           </div>
         </div>
 
@@ -645,7 +642,7 @@
         <div class="services-grid">
           <div class="service-card" data-aos="fade-up" data-aos-delay="100">
             <img
-              src="https://source.unsplash.com/random/600x400/?echocardiogram"
+              src="assets/img/Cardiologist/echocardiogram.jpg"
               alt="فحص الإيكو"
               class="service-img"
             />
@@ -661,7 +658,7 @@
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="200">
             <img
-              src="https://source.unsplash.com/random/600x400/?catheterization"
+              src="assets/img/Cardiologist/catheterization.jpg"
               alt="قسطرة القلب"
               class="service-img"
             />
@@ -676,7 +673,7 @@
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="300">
             <img
-              src="https://source.unsplash.com/random/600x400/?holter"
+              src="assets/img/Cardiologist/holter.jpg"
               alt="جهاز الهولتر"
               class="service-img"
             />
@@ -701,7 +698,7 @@
         <div class="doctors-grid">
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="100">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor,male"
+              src="assets/img/Cardiologist/doc1.jpg"
               alt="د. أحمد محمد"
               class="doctor-img"
             />
@@ -712,13 +709,13 @@
                 حاصل على البورد الأمريكي في أمراض القلب، خبرة أكثر من 15 عاماً
                 في تشخيص وعلاج أمراض القلب.
               </p>
-              <a href="#appointment" class="btn btn-primary">حجز موعد</a>
+              <a href="contact.html" class="btn btn-primary">حجز موعد</a>
             </div>
           </div>
 
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="200">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor,female"
+              src="assets/img/Cardiologist/doc-f 1.jpg"
               alt="د. سارة عبد الله"
               class="doctor-img"
             />
@@ -729,13 +726,13 @@
                 متخصصة في اضطرابات نظم القلب وتركيب أجهزة تنظيم ضربات القلب،
                 خبرة 12 عاماً.
               </p>
-              <a href="#appointment" class="btn btn-primary">حجز موعد</a>
+              <a href="contact.html" class="btn btn-primary">حجز موعد</a>
             </div>
           </div>
 
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="300">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor"
+              src="assets/img/Cardiologist/doc2.jpg"
               alt="د. خالد حسن"
               class="doctor-img"
             />
@@ -746,7 +743,7 @@
                 أجرى أكثر من 2000 عملية قسطرة قلبية ناجحة، متخصص في تداخلية
                 الشرايين التاجية.
               </p>
-              <a href="#appointment" class="btn btn-primary">حجز موعد</a>
+              <a href="contact.html" class="btn btn-primary">حجز موعد</a>
             </div>
           </div>
         </div>
@@ -792,8 +789,13 @@
                 <i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية
                 السعودية
               </li>
-              <li><i class="fas fa-phone"></i> +966 11 123 4567</li>
-              <li><i class="fas fa-envelope"></i> info@albashrihospital.com</li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span dir="ltr">+2 0100 903 9628</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i> hassanabdelaziz@hospital.com
+              </li>
             </ul>
           </div>
         </div>
@@ -807,13 +809,13 @@
     <!-- الأزرار الثابتة -->
     <div class="fixed-buttons">
       <a
-        href="https://wa.me/966551234567"
+        href="https://wa.me/+201009039628"
         class="fixed-btn whatsapp-btn"
         target="_blank"
       >
         <i class="fab fa-whatsapp"></i>
       </a>
-      <a href="tel:+966551234567" class="fixed-btn phone-btn">
+      <a href="tel:+201009039628" class="fixed-btn phone-btn">
         <i class="fas fa-phone"></i>
       </a>
       <a href="#" class="fixed-btn scroll-top-btn">
