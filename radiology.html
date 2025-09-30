@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>قسم الاشاعة</title>
+    <title>قسم الأشعة - مستشفى البشري</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap"
       rel="stylesheet"
@@ -139,6 +139,59 @@
         color: var(--primary-color);
       }
 
+      /* أنماط زر تبديل اللغة */
+      .language-switcher {
+        display: flex;
+        margin-left: 20px;
+      }
+
+      .lang-btn {
+        background: transparent;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 0.9rem;
+      }
+
+      .lang-btn:first-child {
+        border-radius: 4px 0 0 4px;
+        border-right: none;
+      }
+
+      .lang-btn:last-child {
+        border-radius: 0 4px 4px 0;
+      }
+
+      .lang-btn.active {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .lang-btn:hover {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      /* عندما تكون اللغة إنجليزية */
+      [dir="ltr"] .language-switcher {
+        margin-left: 0;
+        margin-right: 20px;
+      }
+
+      [dir="ltr"] .lang-btn:first-child {
+        border-radius: 0 4px 4px 0;
+        border-left: none;
+        border-right: 1px solid var(--primary-color);
+      }
+
+      [dir="ltr"] .lang-btn:last-child {
+        border-radius: 4px 0 0 4px;
+        border-right: none;
+        border-left: 1px solid var(--primary-color);
+      }
+
       .hamburger {
         display: none;
         cursor: pointer;
@@ -156,8 +209,8 @@
       /* أنماط الصفحة الداخلية */
       .department-header {
         background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-          url("assets/img/Emergency/Emergency.jpg") no-repeat center
-            center/cover;
+          url("https://source.unsplash.com/random/1600x900/?radiology,medical")
+            no-repeat center center/cover;
         height: 400px;
         display: flex;
         align-items: center;
@@ -295,6 +348,102 @@
       .service-desc {
         color: #666;
         margin-bottom: 15px;
+      }
+
+      /* أنماط خاصة بالأشعة */
+      .radiology-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .feature-title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+      }
+
+      .equipment-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .equipment-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .equipment-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .equipment-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .equipment-content {
+        padding: 20px;
+      }
+
+      .equipment-name {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+      }
+
+      .preparation-guide {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        margin-top: 50px;
+      }
+
+      .guide-list {
+        list-style: none;
+        margin-top: 20px;
+      }
+
+      .guide-list li {
+        padding: 10px 0;
+        border-bottom: 1px solid #e9ecef;
+        display: flex;
+        align-items: center;
+      }
+
+      .guide-list li:before {
+        content: "✓";
+        color: var(--secondary-color);
+        font-weight: bold;
+        margin-left: 10px;
       }
 
       .doctors-grid {
@@ -515,6 +664,12 @@
         .department-content {
           grid-template-columns: 1fr;
         }
+
+        .language-switcher {
+          margin-left: 0;
+          margin-top: 20px;
+          justify-content: center;
+        }
       }
 
       @media (max-width: 768px) {
@@ -555,34 +710,82 @@
 
         <ul class="nav-menu">
           <li class="nav-item">
-            <a href="index.html" class="nav-link">الصفحة الرئيسية</a>
+            <a href="index.html" class="nav-link" data-translate="home"
+              >الصفحة الرئيسية</a
+            >
           </li>
 
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link">أقسام المستشفى</a>
+            <a href="#" class="nav-link" data-translate="departments"
+              >أقسام المستشفى</a
+            >
             <div class="dropdown-content">
-              <a href="cardiology.html" class="dropdown-item">قسم القلب</a>
-              <a href="emergency.html" class="dropdown-item">قسم الطوارئ</a>
-              <a href="surgery.html" class="dropdown-item">قسم الجراحة</a>
-              <a href="orthopedics.html" class="dropdown-item">قسم العظام</a>
-              <a href="pediatrics.html" class="dropdown-item">قسم الأطفال</a>
-              <a href="radiology.html" class="dropdown-item">قسم الأشعة</a>
-              <a href="laboratory.html" class="dropdown-item"
+              <a
+                href="cardiology.html"
+                class="dropdown-item"
+                data-translate="cardiology"
+                >قسم القلب</a
+              >
+              <a
+                href="emergency.html"
+                class="dropdown-item"
+                data-translate="emergency"
+                >قسم الطوارئ</a
+              >
+              <a
+                href="surgery.html"
+                class="dropdown-item"
+                data-translate="surgery"
+                >قسم الجراحة</a
+              >
+              <a
+                href="orthopedics.html"
+                class="dropdown-item"
+                data-translate="orthopedics"
+                >قسم العظام</a
+              >
+              <a
+                href="pediatrics.html"
+                class="dropdown-item"
+                data-translate="pediatrics"
+                >قسم الأطفال</a
+              >
+              <a
+                href="radiology.html"
+                class="dropdown-item"
+                data-translate="radiology"
+                >قسم الأشعة</a
+              >
+              <a
+                href="laboratory.html"
+                class="dropdown-item"
+                data-translate="laboratory"
                 >المختبر والتحاليل</a
               >
             </div>
           </li>
 
           <li class="nav-item">
-            <a href="about.html" class="nav-link">من نحن</a>
+            <a href="about.html" class="nav-link" data-translate="about"
+              >من نحن</a
+            >
           </li>
           <li class="nav-item">
-            <a href="doctors.html" class="nav-link">الأطباء</a>
+            <a href="doctors.html" class="nav-link" data-translate="doctors"
+              >الأطباء</a
+            >
           </li>
           <li class="nav-item">
-            <a href="contact.html" class="nav-link">تواصل معنا</a>
+            <a href="contact.html" class="nav-link" data-translate="contact"
+              >تواصل معنا</a
+            >
           </li>
         </ul>
+
+        <div class="language-switcher">
+          <button class="lang-btn" data-lang="ar">العربية</button>
+          <button class="lang-btn active" data-lang="en">English</button>
+        </div>
 
         <div class="hamburger">
           <span class="bar"></span>
@@ -592,69 +795,130 @@
       </div>
     </nav>
 
-    <!-- رأس الصفحة - سيتم تغيير هذه الجزئية حسب كل قسم -->
+    <!-- رأس الصفحة -->
     <header class="department-header">
       <div class="container">
-        <h1 class="department-title" data-aos="fade-down">قسم الاشاعة</h1>
+        <h1
+          class="department-title"
+          data-aos="fade-down"
+          data-translate="radiology"
+        >
+          قسم الأشعة
+        </h1>
         <ul class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
-          <li class="breadcrumb-item"><a href="#">الأقسام</a></li>
-          <li class="breadcrumb-item active">قسم الاشاعة</li>
+          <li class="breadcrumb-item">
+            <a href="index.html" data-translate="home">الرئيسية</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="#" data-translate="departments">الأقسام</a>
+          </li>
+          <li class="breadcrumb-item active" data-translate="radiology">
+            قسم الأشعة
+          </li>
         </ul>
       </div>
     </header>
 
-    <!-- محتوى الصفحة - سيتم تغيير هذه الجزئية حسب كل قسم -->
+    <!-- محتوى الصفحة -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up">عن قسم الاشاعة</h2>
+        <h2 class="section-title" data-aos="fade-up">عن قسم الأشعة</h2>
 
         <div class="department-content">
           <div class="department-text" data-aos="fade-right">
             <p>
-              قسم الاشاعة في مستشفى البشري يعمل على مدار الساعة طوال أيام
-              الأسبوع لتقديم الرعاية الطبية العاجلة في الحالات الحرجة. يضم القسم
-              فريقاً طبياً متخصصاً مدرباً على التعامل مع جميع أنواع الحالات
-              الطارئة.
+              يعد قسم الأشعة في مستشفى البشري من الأقسام المتطورة التي تقدم
+              خدمات تشخيصية دقيقة باستخدام أحدث التقنيات في مجال التصوير الطبي.
+              نحن نعمل على توفير تشخيص دقيق وسريع لدعم الأطباء في تحديد الخطط
+              العلاجية المناسبة.
             </p>
 
             <p>
-              نحن مجهزون بأحدث التقنيات والمعدات الطبية لتشخيص وعلاج الحالات
-              الحرجة بسرعة وكفاءة، مع التركيز على إنقاذ الأرواح وتقديم الرعاية
-              الفورية للمرضى في أسرع وقت ممكن.
+              يضم القسم فريقاً متخصصاً من أطباء الأشعة والفنيين المؤهلين، ويعمل
+              بأحدث الأجهزة التكنولوجية التي تضمن الحصول على صور عالية الجودة مع
+              تقليل جرعات الإشعاع للمرضى إلى أدنى حد ممكن.
             </p>
 
             <p>
-              يعمل فريق الطوارئ لدينا بتنسيق كامل مع جميع الأقسام الأخرى في
-              المستشفى لضمان توفير رعاية شاملة ومتكاملة من لحظة وصول المريض حتى
-              استقرار حالته.
+              نحن نقدم مجموعة شاملة من خدمات التصوير الطبي تشمل الأشعة السينية،
+              التصوير المقطعي، الرنين المغناطيسي، والموجات فوق الصوتية، مع
+              التزامنا التام بمعايير السلامة والجودة العالمية.
             </p>
 
-            <a href="#doctors" class="btn btn-primary">أطباء القسم</a>
+            <a href="#doctors" class="btn btn-primary">فريق القسم</a>
           </div>
 
           <div class="department-image" data-aos="fade-left">
             <img
-              src="https://source.unsplash.com/random/600x400/?emergency,medical"
-              alt="قسم الاشاعة"
+              src="https://source.unsplash.com/random/600x400/?radiology,scan"
+              alt="قسم الأشعة"
             />
           </div>
         </div>
 
-        <h2 class="section-title" data-aos="fade-up">خدمات القسم</h2>
+        <!-- ميزات القسم -->
+        <h2 class="section-title" data-aos="fade-up">مميزات قسم الأشعة</h2>
+
+        <div class="radiology-features">
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="feature-title">أمان وجودة عالية</h3>
+            <p>
+              نستخدم أحدث التقنيات التي تضمن أعلى معايير السلامة مع تقليل جرعات
+              الإشعاع
+            </p>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3 class="feature-title">نتائج سريعة</h3>
+            <p>
+              تقديم النتائج في أسرع وقت ممكن مع الحفاظ على أعلى معايير الدقة
+              والجودة
+            </p>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-icon">
+              <i class="fas fa-user-md"></i>
+            </div>
+            <h3 class="feature-title">فريق متخصص</h3>
+            <p>
+              فريق من أطباء الأشعة المؤهلين ذوي الخبرة الواسعة في مختلف تخصصات
+              التصوير الطبي
+            </p>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3 class="feature-title">تقنيات متطورة</h3>
+            <p>
+              أحدث أجهزة التصوير الطبي والتقنيات المتقدمة في مجال الأشعة
+              التشخيصية
+            </p>
+          </div>
+        </div>
+
+        <h2 class="section-title" data-aos="fade-up">خدمات التصوير</h2>
 
         <div class="services-grid">
           <div class="service-card" data-aos="fade-up" data-aos-delay="100">
             <img
-              src="https://source.unsplash.com/random/600x400/?emergency,room"
-              alt="العناية الفورية"
+              src="https://source.unsplash.com/random/600x400/?mri,scan"
+              alt="الرنين المغناطيسي"
               class="service-img"
             />
             <div class="service-content">
-              <h3 class="service-name">العناية الفورية</h3>
+              <h3 class="service-name">الرنين المغناطيسي (MRI)</h3>
               <p class="service-desc">
-                تقديم الرعاية الطبية العاجلة للحالات الحرجة مثل الجلطات والنوبات
-                القلبية والإصابات الخطيرة.
+                تصوير مفصل للأنسجة الرخوة والمفاصل والدماغ باستخدام المجالات
+                المغناطيسية.
               </p>
               <a href="#" class="btn btn-primary">المزيد</a>
             </div>
@@ -662,15 +926,15 @@
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="200">
             <img
-              src="https://source.unsplash.com/random/600x400/?trauma"
-              alt="غرفة الصدمات"
+              src="https://source.unsplash.com/random/600x400/?ct,scan"
+              alt="التصوير المقطعي"
               class="service-img"
             />
             <div class="service-content">
-              <h3 class="service-name">غرفة الصدمات</h3>
+              <h3 class="service-name">التصوير المقطعي (CT Scan)</h3>
               <p class="service-desc">
-                غرفة مجهزة بأحدث المعدات للتعامل مع حالات الصدمات والإصابات
-                الخطيرة بجميع أنواعها.
+                تصوير ثلاثي الأبعاد للأعضاء الداخلية والعظام باستخدام الأشعة
+                السينية.
               </p>
               <a href="#" class="btn btn-primary">المزيد</a>
             </div>
@@ -678,41 +942,122 @@
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="300">
             <img
-              src="https://source.unsplash.com/random/600x400/?ambulance"
-              alt="خدمة الإسعاف"
+              src="https://source.unsplash.com/random/600x400/?ultrasound,medical"
+              alt="الموجات فوق الصوتية"
               class="service-img"
             />
             <div class="service-content">
-              <h3 class="service-name">خدمة الإسعاف</h3>
+              <h3 class="service-name">الموجات فوق الصوتية</h3>
               <p class="service-desc">
-                أسطول من سيارات الإسعاف المجهزة بمعدات متطورة وطاقم طبي مدرب
-                للاستجابة السريعة للحالات الطارئة.
+                تصوير الأعضاء الداخلية باستخدام الموجات الصوتية بدون إشعاع، آمن
+                للحوامل.
+              </p>
+              <a href="#" class="btn btn-primary">المزيد</a>
+            </div>
+          </div>
+
+          <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+            <img
+              src="https://source.unsplash.com/random/600x400/?xray,medical"
+              alt="الأشعة السينية"
+              class="service-img"
+            />
+            <div class="service-content">
+              <h3 class="service-name">الأشعة السينية (X-Ray)</h3>
+              <p class="service-desc">
+                تصوير العظام والصدر والأسنان باستخدام جرعات منخفضة من الأشعة
+                السينية.
               </p>
               <a href="#" class="btn btn-primary">المزيد</a>
             </div>
           </div>
         </div>
+
+        <!-- الأجهزة والمعدات -->
+        <h2 class="section-title" data-aos="fade-up">أجهزة ومعدات القسم</h2>
+
+        <div class="equipment-grid">
+          <div class="equipment-card" data-aos="fade-up" data-aos-delay="100">
+            <img
+              src="https://source.unsplash.com/random/600x400/?mri,machine"
+              alt="جهاز الرنين المغناطيسي"
+              class="equipment-img"
+            />
+            <div class="equipment-content">
+              <h3 class="equipment-name">جهاز الرنين المغناطيسي 3 تسلا</h3>
+              <p class="service-desc">
+                أحدث جهاز رنين مغناطيسي بدقة عالية للكشف الدقيق عن الأمراض.
+              </p>
+            </div>
+          </div>
+
+          <div class="equipment-card" data-aos="fade-up" data-aos-delay="200">
+            <img
+              src="https://source.unsplash.com/random/600x400/?ct,scanner"
+              alt="الماسح المقطعي"
+              class="equipment-img"
+            />
+            <div class="equipment-content">
+              <h3 class="equipment-name">الماسح المقطعي 64 شريحة</h3>
+              <p class="service-desc">
+                جهاز تصوير مقطعي متطور للكشف السريع والدقيق عن الإصابات.
+              </p>
+            </div>
+          </div>
+
+          <div class="equipment-card" data-aos="fade-up" data-aos-delay="300">
+            <img
+              src="https://source.unsplash.com/random/600x400/?ultrasound,machine"
+              alt="جهاز الموجات فوق الصوتية"
+              class="equipment-img"
+            />
+            <div class="equipment-content">
+              <h3 class="equipment-name">جهاز الموجات فوق الصوتية 4D</h3>
+              <p class="service-desc">
+                أحدث أجهزة السونار للتصوير رباعي الأبعاد مع دقة عالية.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- إرشادات التحضير -->
+        <div class="preparation-guide" data-aos="fade-up">
+          <h3 class="section-title">إرشادات التحضير للفحوصات</h3>
+          <p>لضمان دقة نتائج الفحوصات، يرجى اتباع الإرشادات التالية:</p>
+          <ul class="guide-list">
+            <li>الصيام لمدة 4-6 ساعات قبل فحوصات الأشعة المقطعية مع الصبغة</li>
+            <li>
+              إزالة جميع المجوهرات والمعادن قبل إجراء فحوصات الرنين المغناطيسي
+            </li>
+            <li>إبلاغ الفني بأي أجهزة طبية مزروعة أو وجود حمل محتمل</li>
+            <li>
+              شرب كمية كافية من الماء قبل فحوصات الموجات فوق الصوتية للبطن
+            </li>
+            <li>إحضار التقارير الطبية والفحوصات السابقة إن وجدت</li>
+            <li>الالتزام بموعد الفحص المحدد من قبل الطبيب</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <!-- أطباء القسم - سيتم تغيير هذه الجزئية حسب كل قسم -->
+    <!-- فريق القسم -->
     <section class="section" id="doctors" style="background-color: #f8f9fa">
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up">أطباء قسم الاشاعة</h2>
+        <h2 class="section-title" data-aos="fade-up">فريق قسم الأشعة</h2>
 
         <div class="doctors-grid">
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="100">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor,male"
-              alt="د. علي حسين"
+              src="https://source.unsplash.com/random/600x800/?radiologist"
+              alt="د. أحمد السديري"
               class="doctor-img"
             />
             <div class="doctor-content">
-              <h3 class="doctor-name">د. علي حسين</h3>
-              <p class="doctor-specialty">استشاري طب الطوارئ</p>
+              <h3 class="doctor-name">د. أحمد السديري</h3>
+              <p class="doctor-specialty">استشاري الأشعة التشخيصية</p>
               <p class="doctor-desc">
-                خبرة أكثر من 15 عاماً في طب الطوارئ، متخصص في التعامل مع الحالات
-                الحرجة والإصابات الخطيرة.
+                خبرة أكثر من 15 عاماً في مجال الأشعة التشخيصية، متخصص في التصوير
+                العصبي والرنين المغناطيسي.
               </p>
               <a href="#appointment" class="btn btn-primary">حجز موعد</a>
             </div>
@@ -720,16 +1065,16 @@
 
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="200">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor,female"
-              alt="د. نادية عبد الله"
+              src="https://source.unsplash.com/random/600x800/?radiologist,female"
+              alt="د. منى القحطاني"
               class="doctor-img"
             />
             <div class="doctor-content">
-              <h3 class="doctor-name">د. نادية عبد الله</h3>
-              <p class="doctor-specialty">استشارية طب الطوارئ</p>
+              <h3 class="doctor-name">د. منى القحطاني</h3>
+              <p class="doctor-specialty">استشارية أشعة النساء والولادة</p>
               <p class="doctor-desc">
-                متخصصة في طب الطوارئ للأطفال، خبرة 12 عاماً في التعامل مع
-                الحالات الطارئة لدى الأطفال.
+                متخصصة في أشعة الحوض والثدي والتصوير أثناء الحمل، خبرة 12 عاماً
+                في مجال الأشعة النسائية.
               </p>
               <a href="#appointment" class="btn btn-primary">حجز موعد</a>
             </div>
@@ -737,16 +1082,16 @@
 
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="300">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor"
-              alt="د. محمد السعدي"
+              src="https://source.unsplash.com/random/600x800/?radiologist"
+              alt="د. خالد الحربي"
               class="doctor-img"
             />
             <div class="doctor-content">
-              <h3 class="doctor-name">د. محمد السعدي</h3>
-              <p class="doctor-specialty">استشاري إصابات الحوادث</p>
+              <h3 class="doctor-name">د. خالد الحربي</h3>
+              <p class="doctor-specialty">استشاري الأشعة التداخلية</p>
               <p class="doctor-desc">
-                متخصص في علاج إصابات الحوادث والكسور، أجرى أكثر من 1000 عملية
-                جراحية ناجحة.
+                متخصص في الإجراءات التداخلية تحت التوجيه بالأشعة، أجرى أكثر من
+                500 عملية تداخلية ناجحة.
               </p>
               <a href="#appointment" class="btn btn-primary">حجز موعد</a>
             </div>
@@ -760,35 +1105,55 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-column">
-            <h3>مستشفى البشري</h3>
-            <p>
+            <h3 data-translate="hospital_name">مستشفى البشري</h3>
+            <p data-translate="hospital_description">
               نقدم لكم أفضل الخدمات الطبية والرعاية الصحية بأعلى المعايير
               العالمية، مع فريق طبي متكامل ومرافق حديثة.
             </p>
           </div>
 
           <div class="footer-column">
-            <h3>روابط سريعة</h3>
+            <h3 data-translate="quick_links">روابط سريعة</h3>
             <ul class="footer-links">
-              <li><a href="index.html">الصفحة الرئيسية</a></li>
-              <li><a href="about.html">من نحن</a></li>
-              <li><a href="doctors.html">الأطباء</a></li>
-              <li><a href="contact.html">اتصل بنا</a></li>
+              <li>
+                <a href="index.html" data-translate="home">الصفحة الرئيسية</a>
+              </li>
+              <li><a href="about.html" data-translate="about">من نحن</a></li>
+              <li>
+                <a href="doctors.html" data-translate="doctors">الأطباء</a>
+              </li>
+              <li>
+                <a href="contact.html" data-translate="contact">اتصل بنا</a>
+              </li>
             </ul>
           </div>
 
           <div class="footer-column">
-            <h3>الأقسام</h3>
+            <h3 data-translate="departments">الأقسام</h3>
             <ul class="footer-links">
-              <li><a href="cardiology.html">قسم القلب</a></li>
-              <li><a href="emergency.html">قسم الطوارئ</a></li>
-              <li><a href="surgery.html">قسم الجراحة</a></li>
-              <li><a href="orthopedics.html">قسم العظام</a></li>
+              <li>
+                <a href="cardiology.html" data-translate="cardiology"
+                  >قسم القلب</a
+                >
+              </li>
+              <li>
+                <a href="emergency.html" data-translate="emergency"
+                  >قسم الطوارئ</a
+                >
+              </li>
+              <li>
+                <a href="surgery.html" data-translate="surgery">قسم الجراحة</a>
+              </li>
+              <li>
+                <a href="radiology.html" data-translate="radiology"
+                  >قسم الأشعة</a
+                >
+              </li>
             </ul>
           </div>
 
           <div class="footer-column">
-            <h3>معلومات الاتصال</h3>
+            <h3 data-translate="contact_info">معلومات الاتصال</h3>
             <ul class="footer-links">
               <li>
                 <i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية
@@ -801,7 +1166,12 @@
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2023 مستشفى البشري. جميع الحقوق محفوظة.</p>
+          <p>
+            &copy; 2023
+            <span data-translate="hospital_name">مستشفى البشري</span>.
+            <span data-translate="all_rights_reserved">جميع الحقوق محفوظة</span
+            >.
+          </p>
         </div>
       </div>
     </footer>
@@ -882,6 +1252,85 @@
             }
           });
         });
+
+        // نظام تبديل اللغة
+        const langButtons = document.querySelectorAll(".lang-btn");
+        const currentLang = localStorage.getItem("preferred_language") || "ar";
+
+        // تعيين اللغة الحالية
+        setLanguage(currentLang);
+
+        // إضافة event listeners لأزرار اللغة
+        langButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const selectedLang = this.getAttribute("data-lang");
+            setLanguage(selectedLang);
+            localStorage.setItem("preferred_language", selectedLang);
+          });
+        });
+
+        function setLanguage(lang) {
+          // تحديث حالة الأزرار
+          langButtons.forEach((btn) => {
+            if (btn.getAttribute("data-lang") === lang) {
+              btn.classList.add("active");
+            } else {
+              btn.classList.remove("active");
+            }
+          });
+
+          // تغيير اتجاه الصفحة
+          document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+          document.documentElement.lang = lang;
+
+          // تحميل المحتوى المناسب للغة
+          updateTextContent(lang);
+        }
+
+        function updateTextContent(lang) {
+          // كائن الترجمات
+          const translations = {
+            ar: {
+              home: "الصفحة الرئيسية",
+              departments: "أقسام المستشفى",
+              about: "من نحن",
+              doctors: "الأطباء",
+              contact: "تواصل معنا",
+              radiology: "قسم الأشعة",
+              hospital_name: "مستشفى البشري",
+              hospital_description:
+                "نقدم لكم أفضل الخدمات الطبية والرعاية الصحية بأعلى المعايير العالمية، مع فريق طبي متكامل ومرافق حديثة.",
+              quick_links: "روابط سريعة",
+              contact_info: "معلومات الاتصال",
+              all_rights_reserved: "جميع الحقوق محفوظة",
+            },
+            en: {
+              home: "Home",
+              departments: "Departments",
+              about: "About Us",
+              doctors: "Doctors",
+              contact: "Contact Us",
+              radiology: "Radiology Department",
+              hospital_name: "Al Bashri Hospital",
+              hospital_description:
+                "We provide you with the best medical services and health care according to the highest international standards, with an integrated medical team and modern facilities.",
+              quick_links: "Quick Links",
+              contact_info: "Contact Information",
+              all_rights_reserved: "All Rights Reserved",
+            },
+          };
+
+          // العناصر التي تحتاج إلى ترجمة
+          const elementsToTranslate =
+            document.querySelectorAll("[data-translate]");
+
+          elementsToTranslate.forEach((element) => {
+            const key = element.getAttribute("data-translate");
+            if (translations[lang] && translations[lang][key]) {
+              element.textContent = translations[lang][key];
+            }
+          });
+        }
       });
     </script>
   </body>
