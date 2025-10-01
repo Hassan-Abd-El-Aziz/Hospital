@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>أقسام المستشفى - مستشفى البشري</title>
+    <title>قسم الجراحة - مستشفى البشري</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap"
       rel="stylesheet"
@@ -35,8 +35,41 @@
         color: var(--text-color);
         line-height: 1.6;
         overflow-x: hidden;
-        background-color: rgba(243, 109, 109, 0.2);
+        background-color: #fff;
         padding-top: 80px;
+      }
+
+      /* شاشة التحميل */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--light-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+
+      .loader {
+        width: 60px;
+        height: 60px;
+        border: 5px solid rgba(26, 118, 210, 0.2);
+        border-radius: 50%;
+        border-top: 5px solid var(--primary-color);
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
 
       /* أنماط الشريط العلوي */
@@ -156,8 +189,8 @@
       /* أنماط الصفحة الداخلية */
       .department-header {
         background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-          url("assets/img/Surgery/Surgery\ \(2\).jpg") no-repeat center
-            center/cover;
+          url("https://source.unsplash.com/random/1600x900/?surgery,operation")
+            no-repeat center center/cover;
         height: 400px;
         display: flex;
         align-items: center;
@@ -256,6 +289,69 @@
         object-fit: cover;
       }
 
+      /* ميزات القسم */
+      .surgery-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .feature-title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+      }
+
+      /* إحصائيات النجاح */
+      .success-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      .stat-text {
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      /* خدمات القسم */
       .services-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -297,6 +393,90 @@
         margin-bottom: 15px;
       }
 
+      /* غرف العمليات */
+      .operating-rooms {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .room-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+      }
+
+      .room-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .room-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .room-content {
+        padding: 20px;
+      }
+
+      .room-name {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+      }
+
+      .room-specs {
+        list-style: none;
+        margin-top: 15px;
+      }
+
+      .room-specs li {
+        padding: 5px 0;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        align-items: center;
+      }
+
+      .room-specs li:before {
+        content: "✓";
+        color: var(--secondary-color);
+        font-weight: bold;
+        margin-left: 10px;
+      }
+
+      /* إرشادات ما قبل الجراحة */
+      .preparation-guide {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        margin-top: 50px;
+      }
+
+      .guide-list {
+        list-style: none;
+        margin-top: 20px;
+      }
+
+      .guide-list li {
+        padding: 10px 0;
+        border-bottom: 1px solid #e9ecef;
+        display: flex;
+        align-items: center;
+      }
+
+      .guide-list li:before {
+        content: "✓";
+        color: var(--secondary-color);
+        font-weight: bold;
+        margin-left: 10px;
+      }
+
+      /* فريق الجراحين */
       .doctors-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -548,6 +728,11 @@
     </style>
   </head>
   <body>
+    <!-- شاشة التحميل -->
+    <div class="loading-screen">
+      <div class="loader"></div>
+    </div>
+
     <!-- شريط التنقل -->
     <nav class="navbar">
       <div class="navbar-container">
@@ -592,7 +777,7 @@
       </div>
     </nav>
 
-    <!-- رأس الصفحة - سيتم تغيير هذه الجزئية حسب كل قسم -->
+    <!-- رأس الصفحة -->
     <header class="department-header">
       <div class="container">
         <h1 class="department-title" data-aos="fade-down">قسم الجراحة</h1>
@@ -604,7 +789,7 @@
       </div>
     </header>
 
-    <!-- محتوى الصفحة - سيتم تغيير هذه الجزئية حسب كل قسم -->
+    <!-- محتوى الصفحة -->
     <section class="section">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">عن قسم الجراحة</h2>
@@ -612,49 +797,120 @@
         <div class="department-content">
           <div class="department-text" data-aos="fade-right">
             <p>
-              قسم الطوارئ في مستشفى البشري يعمل على مدار الساعة طوال أيام
-              الأسبوع لتقديم الرعاية الطبية العاجلة في الحالات الحرجة. يضم القسم
-              فريقاً طبياً متخصصاً مدرباً على التعامل مع جميع أنواع الحالات
-              الطارئة.
+              يعد قسم الجراحة في مستشفى البشري من الأقسام الرائدة التي تقدم
+              رعاية جراحية متكاملة وفقاً لأعلى المعايير العالمية. نحن نتميز
+              بفريق جراحي متميز ومرافق طبية متطورة تضمن تقديم أفضل النتائج
+              العلاجية.
             </p>
 
             <p>
-              نحن مجهزون بأحدث التقنيات والمعدات الطبية لتشخيص وعلاج الحالات
-              الحرجة بسرعة وكفاءة، مع التركيز على إنقاذ الأرواح وتقديم الرعاية
-              الفورية للمرضى في أسرع وقت ممكن.
+              يضم القسم مجموعة من أفضل الجراحين المتخصصين في مختلف التخصصات
+              الجراحية، ويعمل بأحدث التقنيات الجراحية بما في ذلك الجراحة
+              بالمنظار والجراحة الروبوتية التي توفر للمرضى تعافياً أسرع وأقل
+              ألماً.
             </p>
 
             <p>
-              يعمل فريق الطوارئ لدينا بتنسيق كامل مع جميع الأقسام الأخرى في
-              المستشفى لضمان توفير رعاية شاملة ومتكاملة من لحظة وصول المريض حتى
-              استقرار حالته.
+              نحن نقدم مجموعة شاملة من الإجراءات الجراحية تشمل الجراحة العامة،
+              جراحة القلب، جراحة الأعصاب، وجراحة العظام، مع التزامنا التام
+              بمعايير السلامة والجودة العالمية.
             </p>
 
-            <a href="#doctors" class="btn btn-primary">أطباء القسم</a>
+            <a href="#doctors" class="btn btn-primary">فريق الجراحين</a>
           </div>
 
           <div class="department-image" data-aos="fade-left">
             <img
-              src="https://source.unsplash.com/random/600x400/?emergency,medical"
-              alt="قسم الطوارئ"
+              src="https://source.unsplash.com/random/600x400/?surgery,operation"
+              alt="قسم الجراحة"
             />
           </div>
         </div>
 
-        <h2 class="section-title" data-aos="fade-up">خدمات القسم</h2>
+        <!-- ميزات القسم -->
+        <h2 class="section-title" data-aos="fade-up">مميزات قسم الجراحة</h2>
+
+        <div class="surgery-features">
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-icon">
+              <i class="fas fa-user-md"></i>
+            </div>
+            <h3 class="feature-title">فريق جراحي متميز</h3>
+            <p>
+              أفضل الجراحين المتخصصين في مختلف التخصصات الجراحية مع خبرات واسعة
+            </p>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3 class="feature-title">تقنيات متطورة</h3>
+            <p>
+              أحدث تقنيات الجراحة بالمنظار والجراحة الروبوتية للنتائج الأفضل
+            </p>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-icon">
+              <i class="fas fa-procedures"></i>
+            </div>
+            <h3 class="feature-title">رعاية متكاملة</h3>
+            <p>رعاية شاملة ما قبل وبعد الجراحة لضمان أفضل النتائج والتعافي</p>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="feature-title">أمان وجودة عالية</h3>
+            <p>
+              التزام تام ببروتوكولات السلامة ومكافحة العدوى وفق المعايير
+              العالمية
+            </p>
+          </div>
+        </div>
+
+        <!-- إحصائيات النجاح -->
+        <h2 class="section-title" data-aos="fade-up">إحصائيات النجاح</h2>
+
+        <div class="success-stats">
+          <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-number">15,000+</div>
+            <div class="stat-text">عملية جراحية ناجحة</div>
+          </div>
+
+          <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-number">98.5%</div>
+            <div class="stat-text">معدل نجاح العمليات</div>
+          </div>
+
+          <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-number">25+</div>
+            <div class="stat-text">جراح متخصص</div>
+          </div>
+
+          <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="stat-number">12</div>
+            <div class="stat-text">غرفة عمليات مجهزة</div>
+          </div>
+        </div>
+
+        <!-- التخصصات الجراحية -->
+        <h2 class="section-title" data-aos="fade-up">التخصصات الجراحية</h2>
 
         <div class="services-grid">
           <div class="service-card" data-aos="fade-up" data-aos-delay="100">
             <img
-              src="https://source.unsplash.com/random/600x400/?emergency,room"
-              alt="العناية الفورية"
+              src="https://source.unsplash.com/random/600x400/?heart,surgery"
+              alt="جراحة القلب"
               class="service-img"
             />
             <div class="service-content">
-              <h3 class="service-name">العناية الفورية</h3>
+              <h3 class="service-name">جراحة القلب والصدر</h3>
               <p class="service-desc">
-                تقديم الرعاية الطبية العاجلة للحالات الحرجة مثل الجلطات والنوبات
-                القلبية والإصابات الخطيرة.
+                عمليات القلب المفتوح، جراحة الشرايين التاجية، واستبدال الصمامات
+                القلبية.
               </p>
               <a href="#" class="btn btn-primary">المزيد</a>
             </div>
@@ -662,15 +918,15 @@
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="200">
             <img
-              src="https://source.unsplash.com/random/600x400/?trauma"
-              alt="غرفة الصدمات"
+              src="https://source.unsplash.com/random/600x400/?brain,surgery"
+              alt="جراحة الأعصاب"
               class="service-img"
             />
             <div class="service-content">
-              <h3 class="service-name">غرفة الصدمات</h3>
+              <h3 class="service-name">جراحة الأعصاب</h3>
               <p class="service-desc">
-                غرفة مجهزة بأحدث المعدات للتعامل مع حالات الصدمات والإصابات
-                الخطيرة بجميع أنواعها.
+                جراحات الدماغ والحبل الشوكي، إزالة الأورام، وجراحة الأعصاب
+                الطرفية.
               </p>
               <a href="#" class="btn btn-primary">المزيد</a>
             </div>
@@ -678,41 +934,134 @@
 
           <div class="service-card" data-aos="fade-up" data-aos-delay="300">
             <img
-              src="https://source.unsplash.com/random/600x400/?ambulance"
-              alt="خدمة الإسعاف"
+              src="https://source.unsplash.com/random/600x400/?orthopedic,surgery"
+              alt="جراحة العظام"
               class="service-img"
             />
             <div class="service-content">
-              <h3 class="service-name">خدمة الإسعاف</h3>
+              <h3 class="service-name">جراحة العظام</h3>
               <p class="service-desc">
-                أسطول من سيارات الإسعاف المجهزة بمعدات متطورة وطاقم طبي مدرب
-                للاستجابة السريعة للحالات الطارئة.
+                استبدال المفاصل، جراحة العمود الفقري، وإصلاح الكسور والإصابات.
+              </p>
+              <a href="#" class="btn btn-primary">المزيد</a>
+            </div>
+          </div>
+
+          <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+            <img
+              src="https://source.unsplash.com/random/600x400/?laparoscopic,surgery"
+              alt="جراحة المناظير"
+              class="service-img"
+            />
+            <div class="service-content">
+              <h3 class="service-name">جراحة المناظير</h3>
+              <p class="service-desc">
+                إجراءات جراحية طفيفة التوغل باستخدام أحدث تقنيات المناظير
+                الجراحية.
               </p>
               <a href="#" class="btn btn-primary">المزيد</a>
             </div>
           </div>
         </div>
+
+        <!-- غرف العمليات -->
+        <h2 class="section-title" data-aos="fade-up">غرف العمليات</h2>
+
+        <div class="operating-rooms">
+          <div class="room-card" data-aos="fade-up" data-aos-delay="100">
+            <img
+              src="https://source.unsplash.com/random/600x400/?operating,room"
+              alt="غرفة العمليات الرئيسية"
+              class="room-img"
+            />
+            <div class="room-content">
+              <h3 class="room-name">غرفة العمليات الرئيسية</h3>
+              <p>
+                أحدث غرفة عمليات مجهزة بأفضل التقنيات للعمليات الجراحية المعقدة
+              </p>
+              <ul class="room-specs">
+                <li>نظام تعقيم متكامل</li>
+                <li>أجهزة مراقبة متطورة</li>
+                <li>نظام تكييف خاص</li>
+                <li>إضاءة جراحية متقدمة</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="room-card" data-aos="fade-up" data-aos-delay="200">
+            <img
+              src="https://source.unsplash.com/random/600x400/?cardiac,surgery"
+              alt="غرفة جراحة القلب"
+              class="room-img"
+            />
+            <div class="room-content">
+              <h3 class="room-name">غرفة جراحة القلب</h3>
+              <p>
+                مجهزة خصيصاً لعمليات القلب المفتوح والتداخلات القلبية المعقدة
+              </p>
+              <ul class="room-specs">
+                <li>جهاز القلب والرئة الصناعي</li>
+                <li>نظام التصوير المتقدم</li>
+                <li>مراقبة دقيقة للوظائف الحيوية</li>
+                <li>فريق تمريض متخصص</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="room-card" data-aos="fade-up" data-aos-delay="300">
+            <img
+              src="https://source.unsplash.com/random/600x400/?emergency,surgery"
+              alt="غرفة الطوارئ الجراحية"
+              class="room-img"
+            />
+            <div class="room-content">
+              <h3 class="room-name">غرفة الطوارئ الجراحية</h3>
+              <p>جاهزة على مدار الساعة للتعامل مع الحالات الجراحية الطارئة</p>
+              <ul class="room-specs">
+                <li>جاهزية 24/7</li>
+                <li>معدات طوارئ متكاملة</li>
+                <li>فريق جراحي متاح دائماً</li>
+                <li>نظام استجابة سريع</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- إرشادات ما قبل الجراحة -->
+        <div class="preparation-guide" data-aos="fade-up">
+          <h3 class="section-title">إرشادات ما قبل الجراحة</h3>
+          <p>لضمان نجاح العملية وسلامتك، يرجى اتباع الإرشادات التالية:</p>
+          <ul class="guide-list">
+            <li>الصيام لمدة 8 ساعات قبل العملية (حسب تعليمات الطبيب)</li>
+            <li>إبلاغ الطبيب بجميع الأدوية التي تتناولها</li>
+            <li>التوقف عن التدخين قبل العملية بأسبوعين على الأقل</li>
+            <li>ترتيب مرافق للبقاء معك بعد العملية</li>
+            <li>إحضار جميع التقارير الطبية والتحاليل السابقة</li>
+            <li>التوقيع على نماذج الموافقة المستنيرة</li>
+            <li>الاستحمام بمطهر خاص قبل العملية (حسب التعليمات)</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <!-- أطباء القسم - سيتم تغيير هذه الجزئية حسب كل قسم -->
+    <!-- فريق الجراحين -->
     <section class="section" id="doctors" style="background-color: #f8f9fa">
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up">أطباء قسم الجراحة</h2>
+        <h2 class="section-title" data-aos="fade-up">فريق الجراحين</h2>
 
         <div class="doctors-grid">
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="100">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor,male"
-              alt="د. علي حسين"
+              src="https://source.unsplash.com/random/600x800/?surgeon"
+              alt="د. خالد حسن"
               class="doctor-img"
             />
             <div class="doctor-content">
-              <h3 class="doctor-name">د. علي حسين</h3>
-              <p class="doctor-specialty">استشاري طب الطوارئ</p>
+              <h3 class="doctor-name">د. خالد حسن</h3>
+              <p class="doctor-specialty">استشاري الجراحة العامة</p>
               <p class="doctor-desc">
-                خبرة أكثر من 15 عاماً في طب الطوارئ، متخصص في التعامل مع الحالات
-                الحرجة والإصابات الخطيرة.
+                أجرى أكثر من 5000 عملية جراحية ناجحة، متخصص في جراحات المناظير
+                المتطورة وجراحة الأورام.
               </p>
               <a href="#appointment" class="btn btn-primary">حجز موعد</a>
             </div>
@@ -720,16 +1069,16 @@
 
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="200">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor,female"
-              alt="د. نادية عبد الله"
+              src="https://source.unsplash.com/random/600x800/?cardiac,surgeon"
+              alt="د. سعيد الغامدي"
               class="doctor-img"
             />
             <div class="doctor-content">
-              <h3 class="doctor-name">د. نادية عبد الله</h3>
-              <p class="doctor-specialty">استشارية طب الطوارئ</p>
+              <h3 class="doctor-name">د. سعيد الغامدي</h3>
+              <p class="doctor-specialty">استشاري جراحة القلب</p>
               <p class="doctor-desc">
-                متخصصة في طب الطوارئ للأطفال، خبرة 12 عاماً في التعامل مع
-                الحالات الطارئة لدى الأطفال.
+                متخصص في جراحات القلب المفتوح وزراعة القلب، أجرى أكثر من 2000
+                عملية قلب ناجحة.
               </p>
               <a href="#appointment" class="btn btn-primary">حجز موعد</a>
             </div>
@@ -737,16 +1086,33 @@
 
           <div class="doctor-card" data-aos="fade-up" data-aos-delay="300">
             <img
-              src="https://source.unsplash.com/random/600x800/?doctor"
-              alt="د. محمد السعدي"
+              src="https://source.unsplash.com/random/600x800/?neuro,surgeon"
+              alt="د. نورة العتيبي"
               class="doctor-img"
             />
             <div class="doctor-content">
-              <h3 class="doctor-name">د. محمد السعدي</h3>
-              <p class="doctor-specialty">استشاري إصابات الحوادث</p>
+              <h3 class="doctor-name">د. نورة العتيبي</h3>
+              <p class="doctor-specialty">استشارية جراحة الأعصاب</p>
               <p class="doctor-desc">
-                متخصص في علاج إصابات الحوادث والكسور، أجرى أكثر من 1000 عملية
-                جراحية ناجحة.
+                متخصصة في جراحات الدماغ والأعصاب، حاصلة على البورد الأمريكي في
+                جراحة الأعصاب.
+              </p>
+              <a href="#appointment" class="btn btn-primary">حجز موعد</a>
+            </div>
+          </div>
+
+          <div class="doctor-card" data-aos="fade-up" data-aos-delay="400">
+            <img
+              src="https://source.unsplash.com/random/600x800/?orthopedic,surgeon"
+              alt="د. محمد السبيعي"
+              class="doctor-img"
+            />
+            <div class="doctor-content">
+              <h3 class="doctor-name">د. محمد السبيعي</h3>
+              <p class="doctor-specialty">استشاري جراحة العظام</p>
+              <p class="doctor-desc">
+                متخصص في جراحات المفاصل والعمود الفقري، أجرى أكثر من 3000 عملية
+                استبدال مفاصل.
               </p>
               <a href="#appointment" class="btn btn-primary">حجز موعد</a>
             </div>
@@ -832,6 +1198,14 @@
           once: true,
           offset: 100,
         });
+
+        // إخفاء شاشة التحميل بعد تحميل الصفحة
+        setTimeout(function () {
+          document.querySelector(".loading-screen").style.opacity = "0";
+          setTimeout(function () {
+            document.querySelector(".loading-screen").style.display = "none";
+          }, 500);
+        }, 2000);
 
         // شريط التنقل للجوال
         const hamburger = document.querySelector(".hamburger");
